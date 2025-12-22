@@ -3,6 +3,7 @@ import { ConfigureSoundSettingsForm } from "./configureSoundSettingsForm.js";
 import { ConfigureAnimationSettingsForm } from "./configureAnimationsSettingsForm.js";
 import soundEffectController from "../controllers/soundEffectController.js";
 import animationController from "../controllers/animationController.js";
+import { registerSoundMultiplierSettingHelper } from "./SoundMultiplierSettingHelper.js";
 
 export const defaultSettings = {
    critSounds: soundEffectController.critSoundEffectFiles.map(
@@ -48,6 +49,8 @@ export const handleMigrationSettings = () => {
 };
 
 export const registerSettings = () => {
+   registerSoundMultiplierSettingHelper();
+
    game.settings.registerMenu(constants.modName, "configuration-menu", {
       name: "dramatic-rolls.settings.configure-sounds.name",
       label: "dramatic-rolls.settings.configure-sounds.name",
@@ -66,6 +69,20 @@ export const registerSettings = () => {
       type: ConfigureAnimationSettingsForm,
       scope: "world",
       restricted: true,
+   });
+
+   game.settings.register(constants.modName, "sound-volume-multiplier", {
+      name: "dramatic-rolls.settings.sound-volume-multiplier.name",
+      hint: "dramatic-rolls.settings.sound-volume-multiplier.label",
+      scope: "user",
+      config: true,
+      default: 1.0,
+      type: Number,
+      range: {
+         min: 0,
+         max: 1,
+         step: 0.01,
+      },
    });
 
    game.settings.register(constants.modName, "settings", {

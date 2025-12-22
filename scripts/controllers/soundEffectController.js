@@ -50,11 +50,22 @@ const getFumbleSoundEffect = () => {
    return selectedSound;
 };
 
-const playSound = (soundParams, broadcastSound) => {
+const playSound = (soundParams, broadcastSound, overrideVolume = null) => {
+   // Apply per-player volume multiplier
+   const volumeMultiplier = overrideVolume ?? game.settings.get(
+      constants.modName,
+      "sound-volume-multiplier"
+   );
+   const adjustedVolume = (soundParams.volume || 1.0) * volumeMultiplier;
+   const adjustedSoundParams = {
+      ...soundParams,
+      volume: adjustedVolume,
+   };
+
    if (foundry?.audio?.AudioHelper) {
-      foundry.audio.AudioHelper.play(soundParams, broadcastSound);
+      foundry.audio.AudioHelper.play(adjustedSoundParams, broadcastSound);
    } else {
-      AudioHelper.play(soundParams, broadcastSound);
+      AudioHelper.play(adjustedSoundParams, broadcastSound);
    }
 }
 

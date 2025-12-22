@@ -28,6 +28,10 @@
          "pf2e-trigger-on-degree-of-success": {
             "name": "PF2E Only - Trigger effects based on degree of success",
             "label": "If checked, will trigger a critical effect if the roll result is 10 or more above the roll DC. Will trigger a fumble effect if the roll result is 10 or more below the roll DC"
+         },
+         "sound-volume-multiplier": {
+            "name": "Sound Volume Multiplier",
+            "label": "Adjust the volume of all dramatic roll sound effects (0 = silent, 1 = full volume). This setting is saved per player."
          }
       },
       "configure-sounds-settings-form": {

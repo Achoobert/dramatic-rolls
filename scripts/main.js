@@ -4,7 +4,7 @@ import {
 } from "./settings/settings.js";
 import constants from "../constants.js";
 import { initRollCollection } from "./rollCollector.js";
-import { parseFromGurpsRoll } from "./utils.js";
+import { parseFromGurpsRoll, parseCoCDiceMessage } from "./utils.js";
 import animationController from "./controllers/animationController.js";
 
 Hooks.on("init", () => {
@@ -23,11 +23,38 @@ Hooks.on("ready", () => {
    initRollCollection();
 });
 
-export const handleEffects = (roll, isPublic = true) => {
+export const handleEffects = (roll, isPublic = true, message = null) => {
    const shouldPlay =
       isPublic ||
       !game.settings.get(constants.modName, "trigger-on-public-only");
    const shouldBroadcastToOtherPlayers = isPublic;
+
+   // message is html string from rollCollector.
+   if (game.system.id === "CoC7") {
+      if (!shouldPlay) return;
+
+      const outcome = parseCoCDiceMessage(message);
+
+      if (outcome === "success-critical") {
+         animationController.playCriticalAnimation(
+            "Critical Success!",
+            shouldBroadcastToOtherPlayers
+         );
+      } else if (outcome === "success-extreme") {
+         animationController.playCriticalAnimation(
+            "Extreme Success!",
+            shouldBroadcastToOtherPlayers
+         );
+      } else if (outcome === "fumble" || outcome === "failure") {
+         animationController.playFumbleAnimation(
+            outcome === "fumble" ? "Fumble!" : "Failure!",
+            shouldBroadcastToOtherPlayers
+         );
+      }
+
+      return;
+   }
+
    const summarizedDieRolls = getSummarizedDieRolls(roll);
    const { isCrit, isOverrideCrit } = determineIfCrit(summarizedDieRolls);
    const { isFumble, isOverrideFumble } = determineIfFumble(summarizedDieRolls);

@@ -39,6 +39,25 @@ export const initRollCollection = () => {
          return;
       }
 
+     if (game.system.id === "CoC7") {
+         const coc7Source = msg.content;
+         if (diceSoNiceActive) {
+            pendingRolls.set(msg.id, {
+               ...storedInfo,
+               coc7Html: coc7Source,
+            });
+            return;
+         }
+
+         void handleEffects(
+            storedInfo.rolls,
+            storedInfo.isPublicRoll,
+            coc7Source
+         );
+         pendingRolls.delete(msg.id);
+         return;
+      }
+
       // Check for and parse inline rolls
       let rolls = msg.rolls;
       if (msg.content.indexOf("inline-roll") !== -1) {

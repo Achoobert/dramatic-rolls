@@ -68,3 +68,30 @@ export const parseFromGurpsRoll = (roll) => {
       isCritFailure: criticalFailure,
    }
 }
+
+/*
+ * For Call of Cthulhu We're getting the degree of success 
+ * from the 'dice-total' html element
+ */
+const OUTCOME_CLASSES = ["critical", "fumble", "success-extreme"];
+
+function findOutcomeFromElement(rootEl) {
+   // dice-total success-extreme
+   if (!rootEl?.querySelectorAll) return null;
+   const formulas = rootEl.querySelectorAll(".dice-total");
+   for (const el of formulas) {
+      for (const cls of OUTCOME_CLASSES) {
+         if (el?.classList?.contains(cls)) return cls;
+      }
+   }
+
+   return null; // no outcome found
+}
+
+export const parseCoCDiceMessage = (html_string) => {
+   if (typeof html_string === "string") {
+      const doc = new DOMParser().parseFromString(html_string, "text/html");
+      return findOutcomeFromElement(doc.body);
+   }
+   return null;
+}

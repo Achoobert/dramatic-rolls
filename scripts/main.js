@@ -4,7 +4,7 @@ import {
 } from "./settings/settings.js";
 import constants from "../constants.js";
 import { initRollCollection } from "./rollCollector.js";
-import { parseFromGurpsRoll, parseCoCDiceMessage } from "./utils.js";
+import { parseFromGurpsRoll } from "./utils.js";
 import animationController from "./controllers/animationController.js";
 
 Hooks.on("init", () => {
@@ -23,7 +23,7 @@ Hooks.on("ready", () => {
    initRollCollection();
 });
 
-export const handleEffects = (roll, isPublic = true, message = null) => {
+export const handleEffects = (roll, isPublic = true) => {
    const shouldPlay =
       isPublic ||
       !game.settings.get(constants.modName, "trigger-on-public-only");
@@ -33,25 +33,23 @@ export const handleEffects = (roll, isPublic = true, message = null) => {
    if (game.system.id === "CoC7") {
       if (!shouldPlay) return;
 
-      const outcome = parseCoCDiceMessage(message);
-
-      if (outcome === "critical") {
-         animationController.playCriticalAnimation(
-            "Critical Success!",
-            shouldBroadcastToOtherPlayers
-         );
-      } else if (outcome === "success-extreme") {
-         animationController.playCriticalAnimation(
-            "Extreme Success!",
-            shouldBroadcastToOtherPlayers
-         );
-      } else if (outcome === "fumble" || outcome === "failure") {
-         animationController.playFumbleAnimation(
-            outcome === "fumble" ? "Fumble!" : "Failure!",
-            shouldBroadcastToOtherPlayers
-         );
+      switch (true) {
+         case roll.isCritical:
+            animationController.playCriticalAnimation("Critical Success!", shouldBroadcastToOtherPlayers);
+            break;
+         case roll.isFumble && roll.isPushedFail:
+            animationController.playFumbleAnimation("Fumbled Pushed Roll!", shouldBroadcastToOtherPlayers);
+            break;
+         case roll.isFumble:
+            animationController.playFumbleAnimation("Fumble!", shouldBroadcastToOtherPlayers);
+            break;
+         case roll.isExtremeSuccess:
+            animationController.playCriticalAnimation("Extreme Success!", shouldBroadcastToOtherPlayers);
+            break;
+         case roll.isPushedFail:
+            animationController.playFumbleAnimation("Failed Pushed Roll!", shouldBroadcastToOtherPlayers);
+            break;
       }
-
       return;
    }
 

@@ -90,7 +90,7 @@ export const initRollCollection = () => {
          const storedInfo = pendingRolls.get(msgId);
 
          if (storedInfo?.rolls) {
-            handleEffects(storedInfo.rolls, storedInfo.isPublicRoll);
+            handleEffects(storedInfo.rolls, storedInfo.isPublicRoll, storedInfo.coc7Html || null);
             pendingRolls.delete(msgId);
          }
       });

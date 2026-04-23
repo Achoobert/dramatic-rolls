@@ -28,6 +28,31 @@ export const handleEffects = (roll, isPublic = true) => {
       isPublic ||
       !game.settings.get(constants.modName, "trigger-on-public-only");
    const shouldBroadcastToOtherPlayers = isPublic;
+
+   // message is html string from rollCollector.
+   if (game.system.id === "CoC7") {
+      if (!shouldPlay) return;
+
+      switch (true) {
+         case roll.isCritical:
+            animationController.playCriticalAnimation("Critical Success!", shouldBroadcastToOtherPlayers);
+            break;
+         case roll.isFumble && roll.isPushedFail:
+            animationController.playFumbleAnimation("Fumbled Pushed Roll!", shouldBroadcastToOtherPlayers);
+            break;
+         case roll.isFumble:
+            animationController.playFumbleAnimation("Fumble!", shouldBroadcastToOtherPlayers);
+            break;
+         case roll.isExtremeSuccess:
+            animationController.playCriticalAnimation("Extreme Success!", shouldBroadcastToOtherPlayers);
+            break;
+         case roll.isPushedFail:
+            animationController.playFumbleAnimation("Failed Pushed Roll!", shouldBroadcastToOtherPlayers);
+            break;
+      }
+      return;
+   }
+
    const summarizedDieRolls = getSummarizedDieRolls(roll);
    const { isCrit, isOverrideCrit } = determineIfCrit(summarizedDieRolls);
    const { isFumble, isOverrideFumble } = determineIfFumble(summarizedDieRolls);

@@ -32,10 +32,40 @@ export const initRollCollection = () => {
       }
    });
 
-   Hooks.on("renderChatMessage", (msg) => {
+   Hooks.on("renderChatMessage", async (msg) => {
       const storedInfo = pendingRolls.get(msg.id);
 
       if (!storedInfo) {
+         return;
+      }
+
+      if (game.system.id === "CoC7" && typeof msg.flags.CoC7?.load?.as === 'string') {
+         const report = {
+            isCritical: false,
+            isFumble: false,
+            isExtremeSuccess: false,
+            isPushedFail: false,
+         };
+         // this could be multiple results (ex. tommy gun)
+         for (const r of await game.CoC7.messageResults(msg)) {
+            report.isCritical ||= r.isCritical;
+            report.isFumble ||= r.isFumble;
+            report.isExtremeSuccess ||= r.isExtremeSuccess;
+            report.isPushedFail ||= r.isPushed && !r.isSuccess;
+         }
+         storedInfo.rolls = report;
+
+         if (diceSoNiceActive) {
+            pendingRolls.set(msg.id, {
+               ...storedInfo
+            });
+            return;
+         }
+
+         void handleEffects(
+            ...storedInfo
+         );
+         pendingRolls.delete(msg.id);
          return;
       }
 
@@ -71,7 +101,7 @@ export const initRollCollection = () => {
          const storedInfo = pendingRolls.get(msgId);
 
          if (storedInfo?.rolls) {
-            handleEffects(storedInfo.rolls, storedInfo.isPublicRoll);
+            handleEffects(storedInfo.rolls, storedInfo.isPublicRoll, storedInfo.coc7Html || null);
             pendingRolls.delete(msgId);
          }
       });

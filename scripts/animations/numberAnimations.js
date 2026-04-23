@@ -48,7 +48,7 @@ const getBasicNumberStyling = (num, colorPicks) => ({
    transformOrigin: "bottom center",
 });
 
-const prepAnimation = (className) => {
+export function prepAnimation(className) {
    const animationId = "dramatic-rolls-animation";
    if (document.getElementById(animationId)) {
       document.getElementById(animationId).remove();
@@ -64,11 +64,11 @@ const prepAnimation = (className) => {
    animationContainer.appendChild(el);
 
    return el;
-};
+}
 
-const getFontSize = (num) => {
+export function getFontSize(num) {
    return num.toString().length > 2 ? "20vh" : "45vh";
-};
+}
 
 // based on Confetti! https://www.kirilv.com/canvas-confetti/
 export function numberPop(num, isCrit, isFumble) {

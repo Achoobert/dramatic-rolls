@@ -62,9 +62,7 @@ export const initRollCollection = () => {
             return;
          }
 
-         void handleEffects(
-            ...storedInfo
-         );
+         void handleEffects(storedInfo.rolls, storedInfo.isPublicRoll);
          pendingRolls.delete(msg.id);
          return;
       }

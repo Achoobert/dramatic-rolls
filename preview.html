@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Dramatic Rolls — animation preview</title>
+   <link rel="stylesheet" href="./styles/dramaticRolls.css" />
+   <style>
+      html,
+      body {
+         margin: 0;
+         height: 100%;
+      }
+
+      body {
+         display: flex;
+         flex-direction: column;
+         font-family: system-ui, sans-serif;
+      }
+
+      #preview-ui {
+         flex: 0 0 auto;
+         padding: 12px 16px;
+         background: #222;
+         color: #eee;
+      }
+
+      #preview-ui p {
+         margin: 0 0 10px;
+         font-size: 0.9rem;
+         line-height: 1.45;
+      }
+
+      #preview-ui code {
+         background: #333;
+         padding: 2px 6px;
+         border-radius: 4px;
+      }
+
+      #preview-ui label {
+         margin-right: 8px;
+      }
+
+      #preview-ui input#preview-value {
+         width: 6rem;
+         padding: 4px 8px;
+      }
+
+      #preview-buttons {
+         display: flex;
+         flex-wrap: wrap;
+         gap: 8px;
+         margin-top: 10px;
+         max-height: 28vh;
+         overflow: auto;
+         align-content: flex-start;
+      }
+
+      #preview-buttons button {
+         cursor: pointer;
+         padding: 6px 10px;
+         border-radius: 6px;
+         border: 1px solid #555;
+         background: #333;
+         color: #eee;
+      }
+
+      #preview-buttons button:hover {
+         background: #444;
+      }
+
+      #preview-stage {
+         position: relative;
+         flex: 1;
+         min-height: 52vh;
+         background: #1a1a1a;
+      }
+   </style>
+   <!-- Same specifier as module code (/scripts/...); Foundry maps to vendor bundle, preview uses CDN. -->
+   <script type="importmap">
+         {
+            "imports": {
+               "/scripts/greensock/esm/all.js": "https://esm.sh/gsap@3.12.5"
+            }
+         }
+      </script>
+   <script>
+      globalThis.foundry = {
+         audio: {
+            AudioHelper: {
+               play() { },
+            },
+         },
+      };
+      globalThis.AudioHelper = globalThis.foundry.audio.AudioHelper;
+      globalThis.game = {
+         settings: {
+            get(_scope, key) {
+               if (key === "sound-volume-multiplier") return 1;
+               if (key === "add-sound") return false;
+               return undefined;
+            },
+         },
+      };
+   </script>
+</head>
+
+<body>
+   <div id="preview-ui">
+      <p>
+         Use <strong>local HTTP</strong> (not <code>file://</code>) so ES modules and Skypack
+         load. From repo root:
+         <code>npx --yes serve . -p 8080</code>
+         then open
+         <code>http://localhost:8080/preview.html</code>
+      </p>
+      <label for="preview-value">Sample roll text</label>
+      <input id="preview-value" type="text" value="20" maxlength="32" />
+      <div id="preview-buttons"></div>
+   </div>
+   <div id="preview-stage"></div>
+   <script type="module" src="./scripts/preview/preview.mjs"></script>
+</body>
+
+</html>

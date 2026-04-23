@@ -1,4 +1,5 @@
 import constants from "../../constants.js";
+import { isAnimationEnabledByDefault } from "../animationDefaultEnabled.js";
 import { ConfigureSoundSettingsForm } from "./configureSoundSettingsForm.js";
 import { ConfigureAnimationSettingsForm } from "./configureAnimationsSettingsForm.js";
 import soundEffectController from "../controllers/soundEffectController.js";
@@ -24,12 +25,12 @@ export const defaultSettings = {
    ),
    criticalAnimations: animationController.criticalAnimations.map(
       (animation) => ({
-         enabled: true,
+         enabled: isAnimationEnabledByDefault(animation.id),
          id: animation.id,
       })
    ),
    fumbleAnimations: animationController.fumbleAnimations.map((animation) => ({
-      enabled: true,
+      enabled: isAnimationEnabledByDefault(animation.id),
       id: animation.id,
    })),
 };

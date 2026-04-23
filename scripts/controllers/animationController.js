@@ -13,6 +13,13 @@ import {
    fireCrossBonesConfetti,
 } from "../animations/confetti.js";
 import { ufoDropText } from "../animations/ufoAnimations.js";
+import {
+   fumbleGlitchText,
+   fumbleRetroType,
+   fumbleFlickerText,
+   fumbleHorrorUnifrakturText,
+} from "../animations/fumbleTypography.js";
+import { fumbleSceneGlitch } from "../animations/fumbleSceneGlitch.js";
 
 class Animation {
    constructor(id, name, animationFunction, playSoundEffect = true) {
@@ -89,6 +96,31 @@ class AnimationController {
             "number-font-switch-fumble",
             "Number Font Switch Fumble",
             (num) => numberFontSwitch(num, false)
+         ),
+         new Animation(
+            "fumble-glitch-text",
+            "Glitch Text Fumble",
+            (num) => fumbleGlitchText(num)
+         ),
+         new Animation(
+            "fumble-retro-type",
+            "Retro Pixel Type Fumble",
+            (num) => fumbleRetroType(num)
+         ),
+         new Animation(
+            "fumble-flicker-text",
+            "Flicker Horror Text Fumble",
+            (num) => fumbleFlickerText(num)
+         ),
+         new Animation(
+            "fumble-horror-unifraktur-text",
+            "Unifraktur Step Flicker Fumble",
+            (num) => fumbleHorrorUnifrakturText(num)
+         ),
+         new Animation(
+            "fumble-scene-glitch",
+            "Full Screen Glitch Scene Fumble",
+            (num) => fumbleSceneGlitch(num)
          ),
       ];
 

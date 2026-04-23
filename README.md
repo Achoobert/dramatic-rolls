@@ -1,9 +1,18 @@
 # Dramatic Rolls
 
-![GitHub release (latest by date)](https://img.shields.io/github/downloads/gsimon2/dramatic-rolls/latest/module.zip)
-![GitHub Downloads (specific asset, all releases)](https://img.shields.io/github/downloads/gsimon2/dramatic-rolls/module.zip)
-![Foundry Version](https://img.shields.io/badge/dynamic/json?color=orange&label=Foundry%20Version&query=compatibility.verified&url=https%3A%2F%2Fraw.githubusercontent.com%2Fgsimon2%2Fdramatic-rolls%2Fmain%2Fmodule.json)
-[![](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-%243-blue)](https://www.buymeacoffee.com/gsimon2)
+## Installation
+
+1. In the Foundry VTT setup screen, go to the "Add-on Modules" tab
+2. Click "Install Module"
+3. paste this manifest URL: 
+   ``` bash
+   https://github.com/achoobert/dramatic-rolls/releases/latest/download/module.json
+   ```
+4. Click "Install"
+
+
+![GitHub release (latest by date)](https://img.shields.io/github/downloads/achoobert/dramatic-rolls/latest/module.zip)
+![GitHub Downloads (specific asset, all releases)](https://img.shields.io/github/downloads/achoobert/dramatic-rolls/module.zip)
 
 ## Overview
 
@@ -29,20 +38,20 @@ For users of the Pathfinder 2e game system, Dramatic Rolls offers additional opt
 - Configurable settings to fine-tune your experience
 
 ## Game Systems Support
-- Pathfinder 2e: Trigger effects on critical successes and failures based on degree of success, not just natural 20s and 1s
-- GURPS: Trigger effects on critical successes and failures based on GURPS 4e rules, only for 3d6 rolls with calculated margin of success/failure.
+- Call of Cthulhu
+- other d100 systems soon!
 
 ## Installation
 
 1. In the Foundry VTT setup screen, go to the "Add-on Modules" tab
 2. Click "Install Module"
 3. Search for "Dramatic Rolls" or paste this manifest URL: 
-   `https://github.com/gsimon2/dramatic-rolls/releases/latest/download/module.json`
+   `https://github.com/achoobert/dramatic-rolls/releases/latest/download/module.json`
 4. Click "Install"
 
 ## Usage
 
-Once installed and enabled, Dramatic Rolls will automatically add sound and visual effects to your natural 20s and 1s. You can customize the module's behavior in the settings.
+Once installed and enabled, Dramatic Rolls will automatically add sound and visual effects to your natural 99s and 1s. You can customize the module's behavior in the settings.
 
 ### Configuration
 
@@ -57,22 +66,8 @@ Once installed and enabled, Dramatic Rolls will automatically add sound and visu
 
 ## Compatibility
 
-- Works with Foundry VTT version 11 and above
+- Works with Foundry VTT version 13 and above
 - Compatible with Dice So Nice! module
-
-## Support
-
-If you enjoy this module, consider buying me a coffee: [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-%243-blue)](https://www.buymeacoffee.com/gsimon2)
-
-## Contribution
-Thanks to all the contributors who have helped improve this project:
-- [Chris Maillefaud](https://github.com/chrismaille) - 1 commit
-
-(This list is automatically generated based on git history.)
-<!--  To update, run `git shortlog -sne` and update the commit counts and usernames accordingly.-->
-
-Feel free to submit issues or pull requests on the [GitHub repository](https://github.com/gsimon2/dramatic-rolls).
-
 
 
 ## License

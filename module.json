@@ -20,8 +20,7 @@
   ],
   "version": "3.2.0",
   "esmodules": [
-    "scripts/main.js",
-    "greensock/esm/all.js"
+    "scripts/main.js"
   ],
   "styles": [
     "styles/dramaticRolls.css"

@@ -1,3 +1,4 @@
+import { isAnimationEnabledByDefault } from "../animationDefaultEnabled.js";
 import soundEffectController from "./soundEffectController.js";
 import {
    numberPop,
@@ -176,7 +177,7 @@ class AnimationController {
       const enabledAnimations = this.criticalAnimations.filter(
          (a) =>
             gameSettings.criticalAnimations?.find((b) => b.id === a.id)
-               ?.enabled ?? true
+               ?.enabled ?? isAnimationEnabledByDefault(a.id)
       );
 
       // Only play sound if there are no animations enabled
@@ -211,7 +212,7 @@ class AnimationController {
       const enabledAnimations = this.fumbleAnimations.filter(
          (a) =>
             gameSettings.fumbleAnimations?.find((b) => b.id === a.id)
-               ?.enabled ?? true
+               ?.enabled ?? isAnimationEnabledByDefault(a.id)
       );
 
       // Only play sound if there are no animations enabled

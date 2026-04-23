@@ -94,13 +94,14 @@ jobs:
         run: |
           mkdir -p ./dramatic-rolls
           cp module.json ./dramatic-rolls/
-          [ -f README.md ] && cp README.md ./dramatic-rolls/
-          [ -f constants.js ] && cp constants.js ./dramatic-rolls/
-          [ -f LICENSE ] && cp LICENSE ./dramatic-rolls/
-          [ -d g ] && cp -r g ./dramatic-rolls/
-          [ -d scripts ] && cp -r scripts ./dramatic-rolls/
-          [ -d styles ] && cp -r styles ./dramatic-rolls/
+          cp constants.js ./dramatic-rolls/
+          cp README.md ./dramatic-rolls/
+          cp LICENSE ./dramatic-rolls/
           [ -d lang ] && cp -r lang ./dramatic-rolls/
+          [ -d scripts ] && cp -r scripts ./dramatic-rolls/
+          [ -d sounds ] && cp -r sounds ./dramatic-rolls/
+          [ -d styles ] && cp -r styles ./dramatic-rolls/
+          [ -d templates ] && cp -r templates ./dramatic-rolls/
 
       - name: Create Module Archive
         run: |

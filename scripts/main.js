@@ -30,10 +30,9 @@ export const handleEffects = (roll, isPublic = true) => {
    const shouldBroadcastToOtherPlayers = isPublic;
 
 
-   // message is html string from rollCollector.
-   if (game.system.id === "mosh") {
+
+   if (game.system.id === "mosh" || game.system.id === "deltagreen") {
       if (!shouldPlay) return;
-      console.error(roll);
       switch (true) {
          case roll.isCritical && roll.isSuccess:
             animationController.playCriticalAnimation("Critical Success!", shouldBroadcastToOtherPlayers);
@@ -44,7 +43,7 @@ export const handleEffects = (roll, isPublic = true) => {
       }
       return;
    }
-   // message is html string from rollCollector.
+
    if (game.system.id === "CoC7") {
       if (!shouldPlay) return;
 

@@ -1,4 +1,4 @@
-import { isAnimationEnabledByDefault } from "../animationDefaultEnabled.js";
+
 import soundEffectController from "./soundEffectController.js";
 import {
    numberPop,
@@ -9,7 +9,6 @@ import constants from "../../constants.js";
 import {
    fireConfetti,
    fireFireworkConfetti,
-   firePoopConfetti,
    fireEmojiConfetti,
    fireCrossBonesConfetti,
 } from "../animations/confetti.js";
@@ -76,12 +75,6 @@ class AnimationController {
       this.fumbleAnimations = [
          new Animation("number-pop-fumble", "Number Pop Fumble", (num) =>
             numberPop(num, false, true)
-         ),
-         new Animation(
-            "poop-confetti",
-            "Poop Emoji Confetti",
-            firePoopConfetti,
-            false
          ),
          new Animation(
             "crossbones-confetti",
@@ -174,11 +167,7 @@ class AnimationController {
    playCriticalAnimation = (num, shouldBroadcastToOtherPlayers) => {
       const gameSettings = game.settings.get(constants.modName, "settings");
       const soundEffect = soundEffectController.getCritSoundEffect();
-      const enabledAnimations = this.criticalAnimations.filter(
-         (a) =>
-            gameSettings.criticalAnimations?.find((b) => b.id === a.id)
-               ?.enabled ?? isAnimationEnabledByDefault(a.id)
-      );
+      const enabledAnimations = this.criticalAnimations
 
       // Only play sound if there are no animations enabled
       if (enabledAnimations.length === 0) {
@@ -209,11 +198,7 @@ class AnimationController {
    playFumbleAnimation = (num, shouldBroadcastToOtherPlayers) => {
       const gameSettings = game.settings.get(constants.modName, "settings");
       const soundEffect = soundEffectController.getFumbleSoundEffect();
-      const enabledAnimations = this.fumbleAnimations.filter(
-         (a) =>
-            gameSettings.fumbleAnimations?.find((b) => b.id === a.id)
-               ?.enabled ?? isAnimationEnabledByDefault(a.id)
-      );
+      const enabledAnimations = this.fumbleAnimations
 
       // Only play sound if there are no animations enabled
       if (enabledAnimations.length === 0) {

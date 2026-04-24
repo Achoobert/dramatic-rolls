@@ -113,7 +113,7 @@ const makeBeep = (tl) => {
 export const ufoDropText = (text) => {
    soundEffectController.playSound(
       {
-         src: `modules/${constants.modName}/sounds/ufo/xfiles.mp3`,
+         src: `modules/${constants.modName}/sounds/ufo/xfiles.ogg`,
          volume: 0.75,
          autoplay: true,
          loop: false,

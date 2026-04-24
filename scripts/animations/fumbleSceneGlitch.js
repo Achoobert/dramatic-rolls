@@ -26,7 +26,7 @@ export function fumbleSceneGlitch(num) {
 
    const sub = document.createElement("div");
    sub.className = "dr-fsglitch-sub";
-   sub.textContent = "Fumble";
+   sub.textContent = "FAILURE";
 
    content.appendChild(title);
    content.appendChild(sub);

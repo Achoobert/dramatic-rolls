@@ -1,5 +1,5 @@
 import constants from "../../constants.js";
-import { isAnimationEnabledByDefault } from "../animationDefaultEnabled.js";
+
 import { defaultSettings } from "./settings.js";
 import animationController from "../controllers/animationController.js";
 
@@ -30,7 +30,7 @@ export class ConfigureAnimationSettingsForm extends FormApplication {
                ...animation,
                ...(this.storedSettings.criticalAnimations.find(
                   (a) => animation.id === a.id
-               ) ?? { enabled: isAnimationEnabledByDefault(animation.id) }),
+               ) ?? { enabled: true }),
             })
          ),
          fumbleAnimations: animationController.fumbleAnimations.map(
@@ -38,7 +38,7 @@ export class ConfigureAnimationSettingsForm extends FormApplication {
                ...animation,
                ...(this.storedSettings.fumbleAnimations.find(
                   (a) => animation.id === a.id
-               ) ?? { enabled: isAnimationEnabledByDefault(animation.id) }),
+               ) ?? { enabled: true }),
             })
          ),
       };

@@ -1,5 +1,5 @@
 import constants from "../../constants.js";
-import { isAnimationEnabledByDefault } from "../animationDefaultEnabled.js";
+
 import { ConfigureSoundSettingsForm } from "./configureSoundSettingsForm.js";
 import { ConfigureAnimationSettingsForm } from "./configureAnimationsSettingsForm.js";
 import soundEffectController from "../controllers/soundEffectController.js";
@@ -25,18 +25,41 @@ export const defaultSettings = {
    ),
    criticalAnimations: animationController.criticalAnimations.map(
       (animation) => ({
-         enabled: isAnimationEnabledByDefault(animation.id),
+         enabled: true,
          id: animation.id,
       })
    ),
    fumbleAnimations: animationController.fumbleAnimations.map((animation) => ({
-      enabled: isAnimationEnabledByDefault(animation.id),
+      enabled: true,
       id: animation.id,
    })),
 };
 
+const moduleSoundsPathPrefix = `modules/${constants.modName}/sounds/`;
+
+const bundledSoundsNeedOggMigration = (sounds) =>
+   Array.isArray(sounds) &&
+   sounds.some(
+      (s) =>
+         !s.isUserAddedSound &&
+         typeof s.path === "string" &&
+         s.path.startsWith(moduleSoundsPathPrefix) &&
+         s.path.endsWith(".mp3")
+   );
+
 export const handleMigrationSettings = () => {
    const settings = game.settings.get(constants.modName, "settings");
+
+   if (bundledSoundsNeedOggMigration(settings.critSounds)) {
+      const userCrit = settings.critSounds.filter((s) => s.isUserAddedSound);
+      settings.critSounds = [...defaultSettings.critSounds, ...userCrit];
+   }
+   if (bundledSoundsNeedOggMigration(settings.fumbleSounds)) {
+      const userFumble = settings.fumbleSounds.filter(
+         (s) => s.isUserAddedSound
+      );
+      settings.fumbleSounds = [...defaultSettings.fumbleSounds, ...userFumble];
+   }
 
    // Add settings for the animations if they are not already present
    if (!settings.criticalAnimations) {

@@ -6,7 +6,6 @@ import {
 import {
    fireConfetti,
    fireFireworkConfetti,
-   firePoopConfetti,
    fireEmojiConfetti,
    fireCrossBonesConfetti,
 } from "../animations/confetti.js";
@@ -65,11 +64,6 @@ const previews = [
       section: "Fumble",
       label: "Number Pop Fumble",
       run: () => numberPop(sampleValue(), false, true),
-   },
-   {
-      section: "Fumble",
-      label: "Poop Confetti",
-      run: () => firePoopConfetti(),
    },
    {
       section: "Fumble",

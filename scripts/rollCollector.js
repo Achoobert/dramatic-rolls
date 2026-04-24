@@ -14,7 +14,21 @@ let diceSoNiceActive = false;
 
 export const initRollCollection = () => {
    Hooks.on("createChatMessage", (msg) => {
+      // debugger;
       let rolls = msg.rolls;
+
+
+      if (game.system.id === "mosh") {
+         const report = {
+            isCritical: false,
+            isSuccess: false,
+         };
+         // this could be multiple results (ex. tommy gun)
+         const r = msg.flags.mosh
+         report.isCritical ||= r.critical;
+         report.isSuccess ||= r.success;
+
+      }
 
       // Check for and parse inline rolls
       if (msg.content.indexOf("inline-roll") !== -1) {
@@ -32,12 +46,39 @@ export const initRollCollection = () => {
       }
    });
 
-   Hooks.on("renderChatMessage", async (msg) => {
+   Hooks.on("renderChatMessage", async (msg, context) => {
+      // debugger ;
+      console.error(msg);
       const storedInfo = pendingRolls.get(msg.id);
 
       if (!storedInfo) {
          return;
       }
+
+      if (game.system.id === "mosh") {
+         const report = {
+            isCritical: false,
+            isSuccess: false,
+         };
+         // this could be multiple results (ex. tommy gun)
+         const r = msg.flags.mosh
+         report.isCritical ||= r.critical;
+         report.isSuccess ||= r.success;
+
+         storedInfo.rolls = report;
+
+         if (diceSoNiceActive) {
+            pendingRolls.set(msg.id, {
+               ...storedInfo
+            });
+            return;
+         }
+
+         void handleEffects(storedInfo.rolls, storedInfo.isPublicRoll);
+         pendingRolls.delete(msg.id);
+         return;
+      }
+
 
       if (game.system.id === "CoC7" && typeof msg.flags.CoC7?.load?.as === 'string') {
          const report = {

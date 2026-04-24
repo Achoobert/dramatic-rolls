@@ -29,6 +29,21 @@ export const handleEffects = (roll, isPublic = true) => {
       !game.settings.get(constants.modName, "trigger-on-public-only");
    const shouldBroadcastToOtherPlayers = isPublic;
 
+
+   // message is html string from rollCollector.
+   if (game.system.id === "mosh") {
+      if (!shouldPlay) return;
+      console.error(roll);
+      switch (true) {
+         case roll.isCritical && roll.isSuccess:
+            animationController.playCriticalAnimation("Critical Success!", shouldBroadcastToOtherPlayers);
+            break;
+         case roll.isCritical && !roll.isSuccess:
+            animationController.playFumbleAnimation("Critical Failure!", shouldBroadcastToOtherPlayers);
+            break;
+      }
+      return;
+   }
    // message is html string from rollCollector.
    if (game.system.id === "CoC7") {
       if (!shouldPlay) return;

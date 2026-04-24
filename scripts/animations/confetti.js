@@ -35,7 +35,6 @@ const colors = [
 // document.body.addEventListener("click", () => {
 //    // fireConfetti();
 //    // fireFireworkConfetti();
-//    // firePoopConfetti();
 //    // fireEmojiConfetti();
 //    // fireCrossBonesConfetti();
 // });
@@ -99,7 +98,7 @@ export const fireConfetti = () => {
       setTimeout(() => {
          soundEffectController.playSound(
             {
-               src: `modules/${constants.modName}/sounds/confetti/little_pop.mp3`,
+               src: `modules/${constants.modName}/sounds/confetti/little_pop.ogg`,
                volume: 0.6,
                autoplay: true,
                loop: false,
@@ -126,7 +125,7 @@ export const fireFireworkConfetti = () => {
       setTimeout(() => {
          soundEffectController.playSound(
             {
-               src: `modules/${constants.modName}/sounds/confetti/big_pop.mp3`,
+               src: `modules/${constants.modName}/sounds/confetti/big_pop.ogg`,
                volume: 0.5,
                autoplay: true,
                loop: false,
@@ -149,15 +148,6 @@ export const fireFireworkConfetti = () => {
    });
 };
 
-export const firePoopConfetti = () => {
-   var poop = confetti.shapeFromText({ text: "💩", scalar: 4 });
-   fireCustomShapesConfetti({
-      shapes: [poop],
-      soundPath: `modules/${constants.modName}/sounds/fumble/fart.mp3`,
-      flat: true,
-   });
-};
-
 export const fireEmojiConfetti = () => {
    fireCustomShapesConfetti({
       shapes: [
@@ -169,7 +159,7 @@ export const fireEmojiConfetti = () => {
          confetti.shapeFromText({ text: "😍", scalar: 4 }),
          confetti.shapeFromText({ text: "❤", scalar: 4 }),
       ],
-      soundPath: `modules/${constants.modName}/sounds/crit/magical-twinkle-sparkle-whoosh.mp3`,
+      soundPath: `modules/${constants.modName}/sounds/crit/level-complete-magical-sparkle.ogg`,
       flat: false,
       particleCount: 80,
    });
@@ -178,7 +168,7 @@ export const fireEmojiConfetti = () => {
       setTimeout(() => {
          soundEffectController.playSound(
             {
-               src: `modules/${constants.modName}/sounds/crit/magical-twinkle-sparkle-whoosh.mp3`,
+               src: `modules/${constants.modName}/sounds/crit/level-complete-magical-sparkle.ogg`,
                volume: 0.5,
                autoplay: true,
                loop: false,
@@ -214,7 +204,7 @@ export const fireCrossBonesConfetti = () => {
    fireCustomShapesConfetti({
       shapes: [crossbones],
       // Need a better sound file for this
-      // soundPath: `modules/${constants.modName}/sounds/fumble/crowd-aww.mp3`,
+      // soundPath: `modules/${constants.modName}/sounds/fumble/WindWhoosh.ogg`,
       flat: true,
    });
 };

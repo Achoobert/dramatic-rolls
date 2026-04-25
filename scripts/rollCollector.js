@@ -77,8 +77,8 @@ export const initRollCollection = () => {
          };
          // currently only one roll is passed
          const r = msg.flags.mosh
-         report.isCritical ||= r.critical;
-         report.isSuccess ||= r.success;
+         report.isCritical ||= r.isCritical;
+         report.isSuccess ||= r.isSuccess;
 
          if (!report.isCritical && !report.isSuccess) {
             // no critical or success, so no need to handle effects

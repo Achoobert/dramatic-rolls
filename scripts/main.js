@@ -30,7 +30,6 @@ export const handleEffects = (roll, isPublic = true) => {
    const shouldBroadcastToOtherPlayers = isPublic;
 
 
-
    if (game.system.id === "mosh" || game.system.id === "deltagreen") {
       if (!shouldPlay) return;
       switch (true) {

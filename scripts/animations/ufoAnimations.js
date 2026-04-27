@@ -48,12 +48,12 @@ const ufo = `
 `;
 
 const prepAnimation = () => {
-   const animationId = "dramatic-rolls-animation";
+   const animationId = "dramatic-d100-animation";
    if (document.getElementById(animationId)) {
       document.getElementById(animationId).remove();
    }
 
-   const animationContainer = document.getElementById("dramatic-rolls-animation-container");
+   const animationContainer = document.getElementById("dramatic-d100-animation-container");
    const ufoContainer = document.createElement("div");
    ufoContainer.id = animationId;
    ufoContainer.innerHTML = ufo;
@@ -113,7 +113,7 @@ const makeBeep = (tl) => {
 export const ufoDropText = (text) => {
    soundEffectController.playSound(
       {
-         src: `modules/${constants.modName}/sounds/ufo/xfiles.ogg`,
+         src: `modules/${constants.modName}/sounds/fumble/Whoosh_ghostly.ogg`,
          volume: 0.75,
          autoplay: true,
          loop: false,

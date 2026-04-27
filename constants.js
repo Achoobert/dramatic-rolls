@@ -1,6 +1,6 @@
 const constants = {
-   modName: "dramatic-rolls",
-   socketName: "module.dramatic-rolls",
+   modName: "dramatic-d100",
+   socketName: "module.dramatic-d100",
    debugMode: false,
    overrideCrit: false,
    overrideFumble: false

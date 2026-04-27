@@ -1,64 +1,57 @@
-# Dramatic Rolls
+# Dramatic d100s
 
 ## Installation
 
 1. In the Foundry VTT setup screen, go to the "Add-on Modules" tab
 2. Click "Install Module"
-3. paste this manifest URL: 
-   ``` bash
-   https://github.com/achoobert/dramatic-rolls/releases/latest/download/module.json
+3. Search for "Dramatic d100", or paste this manifest URL:
+   ```
+   https://github.com/achoobert/dramatic-d100/releases/latest/download/module.json
    ```
 4. Click "Install"
 
-
-![GitHub release (latest by date)](https://img.shields.io/github/downloads/achoobert/dramatic-rolls/latest/module.zip)
-![GitHub Downloads (specific asset, all releases)](https://img.shields.io/github/downloads/achoobert/dramatic-rolls/module.zip)
+![GitHub release (latest by date)](https://img.shields.io/github/downloads/achoobert/dramatic-d100/latest/module.zip)
+![GitHub Downloads (specific asset, all releases)](https://img.shields.io/github/downloads/achoobert/dramatic-d100/module.zip)
 
 ## Overview
 
-Dramatic Rolls is an exciting module for [FoundryVTT](https://foundryvtt.com/) that adds a touch of drama and excitement to your natural 20s and natural 1s! Enhance your gaming experience with customizable sound effects, eye-catching animations, and confetti explosions that celebrate critical successes and emphasize critical failures. Whether you're landing a perfect hit or fumbling spectacularly, Dramatic Rolls ensures these pivotal moments are marked with flair, creating memorable experiences for both players and Game Masters alike.
+Dramatic d100 is an exciting module for [FoundryVTT](https://foundryvtt.com/) that adds a touch of drama and excitement to your 99s and 1s! Enhance your gaming experience with customizable sound effects, eye-catching animations, and confetti explosions that celebrate critical successes and emphasize critical failures. Whether you're landing a perfect hit or fumbling spectacularly, Dramatic d100 ensures these pivotal moments are marked with flair, creating memorable experiences for both players and Game Masters alike.
 
-For users of the Pathfinder 2e game system, Dramatic Rolls offers additional options to trigger effects based on critical successes and failures, even when the result isn't from a natural 20 or 1. This feature takes into account the Pathfinder 2e degree of success system, allowing for more nuanced and system-specific dramatic moments during gameplay.
+For users of Delta Green and Call of Cthulhu game systems, Dramatic d100s triggers effects based on critical successes and failures, 
 
 
-### Dramatic Rolls Example
+### Dramatic d100s Example
 
-![dramatic-rolls-example](https://github.com/user-attachments/assets/3b82d375-62b7-4d05-96d0-f6a88f301789)
+![dramatic-d100-example](https://github.com/user-attachments/assets/3b82d375-62b7-4d05-96d0-f6a88f301789)
 
 ### With Dice So Nice
 
-![dramatic-rolls-example-dice-so-nice](https://github.com/user-attachments/assets/7799e746-6e8b-4667-a889-c9aa4f4e7bcd)
+![dramatic-d100-example-dice-so-nice](https://github.com/user-attachments/assets/7799e746-6e8b-4667-a889-c9aa4f4e7bcd)
 
 ## Features
 
-- Sound effects for critical hits (natural 20s) and fumbles (natural 1s)
+- Sound effects 
 - Customizable sound library with ability to add your own sounds
-- Visual effects including confetti and more for critical hits
+- Spooky effects for those crushing failures
 - Compatible with Dice So Nice! module
 - Configurable settings to fine-tune your experience
 
 ## Game Systems Support
 - Call of Cthulhu
+- Delta Green
+- Mothership (Soon!)
 - other d100 systems soon!
-
-## Installation
-
-1. In the Foundry VTT setup screen, go to the "Add-on Modules" tab
-2. Click "Install Module"
-3. Search for "Dramatic Rolls" or paste this manifest URL: 
-   `https://github.com/achoobert/dramatic-rolls/releases/latest/download/module.json`
-4. Click "Install"
 
 ## Usage
 
-Once installed and enabled, Dramatic Rolls will automatically add sound and visual effects to your natural 99s and 1s. You can customize the module's behavior in the settings.
+Once installed and enabled, Dramatic d100 will automatically add sound and visual effects to your natural 99s and 1s. You can customize the module's behavior in the settings.
 
 ### Configuration
 
 1. Go to "Game Settings" > "Configure Settings"
-2. Find "Dramatic Rolls" in the list
+2. Find "Dramatic d100s" in the list
 3. In this menu, you can:
-   - Enable/disable sounds and animations
+   - Enable/disable sounds and animations (**Play animations** is per-user and affects visuals only; world **Add sound** still controls crit/fumble audio unless you turn it off)
    - Adjust sound volumes
    - Add custom sounds
    - Curate which animations play for critical hits and fumbles

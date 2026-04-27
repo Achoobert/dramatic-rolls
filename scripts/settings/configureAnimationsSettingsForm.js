@@ -62,14 +62,14 @@ export class ConfigureAnimationSettingsForm extends FormApplication {
    bindPlayAnimationButtons(html) {
       this.data.criticalAnimations.forEach((animation, index) => {
          html
-            .find(`button[id="play-crit-animation-${index}`)
+            .find(`#play-crit-animation-${index}`)
             .click(
                ((e) => this.onPlayAnimation(e, animation.id, 20)).bind(this)
             );
       });
       this.data.fumbleAnimations.forEach((animation, index) => {
          html
-            .find(`button[id="play-fumble-animation-${index}`)
+            .find(`#play-fumble-animation-${index}`)
             .click(
                ((e) => this.onPlayAnimation(e, animation.id, 1)).bind(this)
             );

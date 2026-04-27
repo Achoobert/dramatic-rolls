@@ -14,7 +14,6 @@ let diceSoNiceActive = false;
 
 export const initRollCollection = () => {
    Hooks.on("createChatMessage", (msg) => {
-      // debugger;
       let rolls = msg.rolls;
 
       // Check for and parse inline rolls
@@ -76,7 +75,7 @@ export const initRollCollection = () => {
             isSuccess: false,
          };
          // currently only one roll is passed
-         const r = msg.flags.mosh
+         const r = msg.flags.mosh;
          report.isCritical ||= r.isCritical;
          report.isSuccess ||= r.isSuccess;
 
@@ -163,7 +162,7 @@ export const initRollCollection = () => {
          const storedInfo = pendingRolls.get(msgId);
 
          if (storedInfo?.rolls) {
-            handleEffects(storedInfo.rolls, storedInfo.isPublicRoll, storedInfo.coc7Html || null);
+            handleEffects(storedInfo.rolls, storedInfo.isPublicRoll);
             pendingRolls.delete(msgId);
          }
       });

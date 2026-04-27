@@ -1,5 +1,5 @@
 {
-   "dramatic-rolls": {
+   "dramatic-d100": {
       "settings": {
          "add-sound": {
             "name": "Add Sound Effects",
@@ -18,8 +18,8 @@
             "label": "Configure which animations play on crits and fumbles."
          },
          "disable-npc-rolls": {
-            "name": "Disable Dramatic Rolls for NPCs and GM",
-            "label": "Let the players have their fun, dramatic rolls will only trigger for players and actors that have a player owner."
+            "name": "Disable Dramatic d100s for NPCs and GM",
+            "label": "Let the players have their fun, Dramatic d100s will only trigger for players and actors that have a player owner."
          },
          "trigger-on-public-only": {
             "name": "Play sounds & animations on Public rolls only",
@@ -31,7 +31,7 @@
          },
          "sound-volume-multiplier": {
             "name": "Sound Volume Multiplier",
-            "label": "Adjust the volume of all dramatic roll sound effects (0 = silent, 1 = full volume). This setting is saved per player."
+            "label": "Adjust the volume of all Dramatic d100 sound effects (0 = silent, 1 = full volume). This setting is saved per player."
          }
       },
       "configure-sounds-settings-form": {

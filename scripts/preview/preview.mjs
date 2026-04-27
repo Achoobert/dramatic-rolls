@@ -110,10 +110,10 @@ const previews = [
 function ensureAnimationContainer() {
    const stage = document.getElementById("preview-stage");
    if (!stage) return null;
-   let el = document.getElementById("dramatic-rolls-animation-container");
+   let el = document.getElementById("dramatic-d100-animation-container");
    if (!el) {
       el = document.createElement("div");
-      el.id = "dramatic-rolls-animation-container";
+      el.id = "dramatic-d100-animation-container";
       stage.appendChild(el);
    }
    return el;

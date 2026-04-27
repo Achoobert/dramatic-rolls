@@ -1,6 +1,6 @@
 {
-  "title": "Dramatic Rolls",
-  "description": "A simple module for FoundryVTT that adds a little excitement to d100 fumbles, d100 extreme successes, and natural 20s and natural 1s.",
+  "title": "Dramatic d100s",
+  "description": "A simple module that adds a little excitement to extreme d100 results.",
   "authors": [
     {
       "name": "Glen Simon",
@@ -18,7 +18,7 @@
       }
     }
   ],
-  "version": "3.2.0",
+  "version": "3.3.1",
   "esmodules": [
     "scripts/main.js"
   ],
@@ -34,13 +34,13 @@
     }
   ],
   "socket": true,
-  "url": "https://github.com/achoobert/dramatic-rolls",
-  "bugs": "https://github.com/achoobert/dramatic-rolls/issues",
-  "changelog": "https://github.com/achoobert/dramatic-rolls/releases",
-  "download": "https://github.com/achoobert/dramatic-rolls/releases/download/v3.2.0/module.zip",
-  "manifest": "https://github.com/achoobert/dramatic-rolls/releases/download/v3.2.0/module.json",
-  "readme": "https://raw.githubusercontent.com/achoobert/dramatic-rolls/main/README.md",
-  "id": "dramatic-rolls",
+  "url": "https://github.com/achoobert/dramatic-d100",
+  "bugs": "https://github.com/achoobert/dramatic-d100/issues",
+  "changelog": "https://github.com/achoobert/dramatic-d100/releases",
+  "download": "https://github.com/achoobert/dramatic-d100/releases/download/v3.2.0/module.zip",
+  "manifest": "https://github.com/achoobert/dramatic-d100/releases/download/v3.2.0/module.json",
+  "readme": "https://raw.githubusercontent.com/achoobert/dramatic-d100/main/README.md",
+  "id": "dramatic-d100",
   "compatibility": {
     "minimum": "11",
     "verified": "13.351"

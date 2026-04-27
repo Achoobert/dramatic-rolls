@@ -12,22 +12,22 @@ const critSoundEffectFiles = [
    "choral_woosh_1.ogg",
    "Impact.ogg",
    "Impact_1.ogg",
-   "level-complete-magical-sparkle.ogg",
    "resonant_chimes.ogg",
    "rumble.ogg",
    "thompy_woosh.ogg",
+   "Boom_rattle.ogg",
 ].map((fileName) => `${baseSoundPath}/crit/${fileName}`);
 
 const fumbleSoundEffectFiles = [
    "Apperance_Whoosh.ogg",
    "Minor_Hits.ogg",
    "power-down.ogg",
-   "SaxophoneDowner.ogg",
-   "Sword_Swish.ogg",
    "Thunder_Whoosh.ogg",
-   "video-game-game-over.ogg",
    "Whoosh_ghostly.ogg",
    "WindWhoosh.ogg",
+   "DissinantPiano.ogg",
+   "Apperance_Whoosh.ogg",
+   "Doom.ogg",
 ].map((fileName) => `${baseSoundPath}/fumble/${fileName}`);
 
 const getCritSoundEffect = () => {

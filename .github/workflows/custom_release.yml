@@ -92,20 +92,20 @@ jobs:
 
       - name: Prepare Module Directory
         run: |
-          mkdir -p ./dramatic-rolls
-          cp module.json ./dramatic-rolls/
-          cp constants.js ./dramatic-rolls/
-          cp README.md ./dramatic-rolls/
-          cp LICENSE ./dramatic-rolls/
-          [ -d lang ] && cp -r lang ./dramatic-rolls/
-          [ -d scripts ] && cp -r scripts ./dramatic-rolls/
-          [ -d sounds ] && cp -r sounds ./dramatic-rolls/
-          [ -d styles ] && cp -r styles ./dramatic-rolls/
-          [ -d templates ] && cp -r templates ./dramatic-rolls/
+          mkdir -p ./dramatic-d100
+          cp module.json ./dramatic-d100/
+          cp constants.js ./dramatic-d100/
+          cp README.md ./dramatic-d100/
+          cp LICENSE ./dramatic-d100/
+          [ -d lang ] && cp -r lang ./dramatic-d100/
+          [ -d scripts ] && cp -r scripts ./dramatic-d100/
+          [ -d sounds ] && cp -r sounds ./dramatic-d100/
+          [ -d styles ] && cp -r styles ./dramatic-d100/
+          [ -d templates ] && cp -r templates ./dramatic-d100/
 
       - name: Create Module Archive
         run: |
-          cd ./dramatic-rolls
+          cd ./dramatic-d100
           zip --recurse-paths ../module.zip ./*
           cd ..
 

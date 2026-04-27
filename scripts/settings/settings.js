@@ -76,9 +76,9 @@ export const registerSettings = () => {
    registerSoundMultiplierSettingHelper();
 
    game.settings.registerMenu(constants.modName, "configuration-menu", {
-      name: "dramatic-rolls.settings.configure-sounds.name",
-      label: "dramatic-rolls.settings.configure-sounds.name",
-      hint: "dramatic-rolls.settings.configure-sounds.label",
+      name: "dramatic-d100.settings.configure-sounds.name",
+      label: "dramatic-d100.settings.configure-sounds.name",
+      hint: "dramatic-d100.settings.configure-sounds.label",
       icon: "fas fa-cogs",
       type: ConfigureSoundSettingsForm,
       scope: "world",
@@ -86,9 +86,9 @@ export const registerSettings = () => {
    });
 
    game.settings.registerMenu(constants.modName, "animation-menu", {
-      name: "dramatic-rolls.settings.configure-animations.name",
-      label: "dramatic-rolls.settings.configure-animations.name",
-      hint: "dramatic-rolls.settings.configure-animations.label",
+      name: "dramatic-d100.settings.configure-animations.name",
+      label: "dramatic-d100.settings.configure-animations.name",
+      hint: "dramatic-d100.settings.configure-animations.label",
       icon: "fas fa-cogs",
       type: ConfigureAnimationSettingsForm,
       scope: "world",
@@ -96,8 +96,8 @@ export const registerSettings = () => {
    });
 
    game.settings.register(constants.modName, "sound-volume-multiplier", {
-      name: "dramatic-rolls.settings.sound-volume-multiplier.name",
-      hint: "dramatic-rolls.settings.sound-volume-multiplier.label",
+      name: "dramatic-d100.settings.sound-volume-multiplier.name",
+      hint: "dramatic-d100.settings.sound-volume-multiplier.label",
       scope: "user",
       config: true,
       default: 1.0,
@@ -118,8 +118,8 @@ export const registerSettings = () => {
    });
 
    game.settings.register(constants.modName, "disable-npc-rolls", {
-      name: "dramatic-rolls.settings.disable-npc-rolls.name",
-      hint: "dramatic-rolls.settings.disable-npc-rolls.label",
+      name: "dramatic-d100.settings.disable-npc-rolls.name",
+      hint: "dramatic-d100.settings.disable-npc-rolls.label",
       scope: "world",
       config: true,
       default: false,
@@ -127,8 +127,8 @@ export const registerSettings = () => {
    });
 
    game.settings.register(constants.modName, "trigger-on-public-only", {
-      name: "dramatic-rolls.settings.trigger-on-public-only.name",
-      hint: "dramatic-rolls.settings.trigger-on-public-only.label",
+      name: "dramatic-d100.settings.trigger-on-public-only.name",
+      hint: "dramatic-d100.settings.trigger-on-public-only.label",
       scope: "world",
       config: true,
       default: false,
@@ -136,8 +136,8 @@ export const registerSettings = () => {
    });
 
    game.settings.register(constants.modName, "play-animations", {
-      name: "dramatic-rolls.settings.play-animations.name",
-      hint: "dramatic-rolls.settings.play-animations.label",
+      name: "dramatic-d100.settings.play-animations.name",
+      hint: "dramatic-d100.settings.play-animations.label",
       scope: "client",
       config: true,
       default: true,
@@ -145,8 +145,8 @@ export const registerSettings = () => {
    });
 
    game.settings.register(constants.modName, "add-sound", {
-      name: "dramatic-rolls.settings.add-sound.name",
-      hint: "dramatic-rolls.settings.add-sound.label",
+      name: "dramatic-d100.settings.add-sound.name",
+      hint: "dramatic-d100.settings.add-sound.label",
       scope: "world",
       config: true,
       default: true,
@@ -158,8 +158,8 @@ export const registerSettings = () => {
          constants.modName,
          "pf2e-trigger-on-degree-of-success",
          {
-            name: "dramatic-rolls.settings.pf2e-trigger-on-degree-of-success.name",
-            hint: "dramatic-rolls.settings.pf2e-trigger-on-degree-of-success.label",
+            name: "dramatic-d100.settings.pf2e-trigger-on-degree-of-success.name",
+            hint: "dramatic-d100.settings.pf2e-trigger-on-degree-of-success.label",
             scope: "world",
             config: true,
             default: false,

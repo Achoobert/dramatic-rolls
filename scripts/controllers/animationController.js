@@ -20,6 +20,7 @@ import {
    fumbleHorrorUnifrakturText,
 } from "../animations/fumbleTypography.js";
 import { fumbleSceneGlitch } from "../animations/fumbleSceneGlitch.js";
+import { dismissDramaticPresentation } from "../dramatic-dice-animation.js";
 
 class Animation {
    constructor(id, name, animationFunction, playSoundEffect = true) {
@@ -29,6 +30,7 @@ class Animation {
       this.playSoundEffect = playSoundEffect;
    }
 
+   /** Client `play-animations`: visuals only; sounds use world `add-sound`. */
    play = (num) => {
       if (game.settings.get(constants.modName, "play-animations")) {
          this.animationFunction(num);
@@ -128,10 +130,52 @@ class AnimationController {
    }
 
    #setupAnimations = () => {
+      if (document.getElementById("dramatic-d100-animation-host")) return;
+
+      const host = document.createElement("div");
+      host.id = "dramatic-d100-animation-host";
+
+      const viewport = document.createElement("div");
+      viewport.id = "dramatic-d100-animation-viewport";
+
       const animationContainer = document.createElement("div");
-      animationContainer.id = "dramatic-rolls-animation-container";
-      document.body.appendChild(animationContainer);
+      animationContainer.id = "dramatic-d100-animation-container";
+
+      viewport.appendChild(animationContainer);
+      host.appendChild(viewport);
+      document.body.appendChild(host);
+
+      window.addEventListener("keydown", (e) => {
+         if (e.key !== "Escape" || e.repeat) return;
+         const hasAnim = document.getElementById("dramatic-d100-animation");
+         const hasPrompt = document.getElementById("dramatic-dice-animation-prompt");
+         if (!hasAnim && !hasPrompt) return;
+         e.preventDefault();
+         dismissDramaticPresentation();
+      });
    };
+
+   /** Missing row for an id defaults to enabled (migration / new animations). */
+   #isAnimationEnabledInList(storedList, animation) {
+      if (!Array.isArray(storedList)) return true;
+      const row = storedList.find((a) => a.id === animation.id);
+      if (!row) return true;
+      return row.enabled !== false;
+   }
+
+   #eligibleCriticalAnimations() {
+      const stored = game.settings.get(constants.modName, "settings");
+      return this.criticalAnimations.filter((a) =>
+         this.#isAnimationEnabledInList(stored?.criticalAnimations, a)
+      );
+   }
+
+   #eligibleFumbleAnimations() {
+      const stored = game.settings.get(constants.modName, "settings");
+      return this.fumbleAnimations.filter((a) =>
+         this.#isAnimationEnabledInList(stored?.fumbleAnimations, a)
+      );
+   }
 
    #playSound = (soundEffect, broadcastSound) => {
       if (
@@ -152,32 +196,33 @@ class AnimationController {
    };
 
    playById = (id, num) => {
-      const animiations = [
-         ...this.criticalAnimations,
-         ...this.fumbleAnimations,
-      ];
-      const animation = animiations.find((animation) => animation.id === id);
-      if (animation) {
-         animation.play(num);
-      } else {
+      const crit = this.criticalAnimations.find((a) => a.id === id);
+      const fum = this.fumbleAnimations.find((a) => a.id === id);
+      const animation = crit || fum;
+      if (!animation) {
          console.error(`Animation with id "${id}" not found.`);
+         return;
       }
+      const stored = game.settings.get(constants.modName, "settings");
+      const list = crit ? stored?.criticalAnimations : stored?.fumbleAnimations;
+      if (!this.#isAnimationEnabledInList(list, animation)) {
+         return;
+      }
+      animation.play(num);
    };
 
    playCriticalAnimation = (num, shouldBroadcastToOtherPlayers) => {
-      const gameSettings = game.settings.get(constants.modName, "settings");
       const soundEffect = soundEffectController.getCritSoundEffect();
-      const enabledAnimations = this.criticalAnimations
+      const eligibleAnimations = this.#eligibleCriticalAnimations();
 
-      // Only play sound if there are no animations enabled
-      if (enabledAnimations.length === 0) {
+      if (eligibleAnimations.length === 0) {
          this.#playSound(soundEffect, shouldBroadcastToOtherPlayers);
          return;
       }
 
       const animation =
-         enabledAnimations[
-            Math.floor(Math.random() * enabledAnimations.length)
+         eligibleAnimations[
+         Math.floor(Math.random() * eligibleAnimations.length)
          ];
 
       if (animation.playSoundEffect) {
@@ -196,19 +241,17 @@ class AnimationController {
    };
 
    playFumbleAnimation = (num, shouldBroadcastToOtherPlayers) => {
-      const gameSettings = game.settings.get(constants.modName, "settings");
       const soundEffect = soundEffectController.getFumbleSoundEffect();
-      const enabledAnimations = this.fumbleAnimations
+      const eligibleAnimations = this.#eligibleFumbleAnimations();
 
-      // Only play sound if there are no animations enabled
-      if (enabledAnimations.length === 0) {
+      if (eligibleAnimations.length === 0) {
          this.#playSound(soundEffect, shouldBroadcastToOtherPlayers);
          return;
       }
 
       const animation =
-         enabledAnimations[
-            Math.floor(Math.random() * enabledAnimations.length)
+         eligibleAnimations[
+         Math.floor(Math.random() * eligibleAnimations.length)
          ];
 
       if (animation.playSoundEffect) {

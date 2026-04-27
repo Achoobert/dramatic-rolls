@@ -151,15 +151,9 @@ export const fireFireworkConfetti = () => {
 export const fireEmojiConfetti = () => {
    fireCustomShapesConfetti({
       shapes: [
-         confetti.shapeFromText({ text: "🎉", scalar: 4 }),
-         confetti.shapeFromText({ text: "😁", scalar: 4 }),
          confetti.shapeFromText({ text: "🔥", scalar: 4 }),
-         confetti.shapeFromText({ text: "💎", scalar: 4 }),
-         confetti.shapeFromText({ text: "⭐", scalar: 4 }),
-         confetti.shapeFromText({ text: "😍", scalar: 4 }),
-         confetti.shapeFromText({ text: "❤", scalar: 4 }),
       ],
-      soundPath: `modules/${constants.modName}/sounds/crit/level-complete-magical-sparkle.ogg`,
+      soundPath: `modules/${constants.modName}/sounds/crit/resonant_chimes.ogg`,
       flat: false,
       particleCount: 80,
    });
@@ -168,7 +162,7 @@ export const fireEmojiConfetti = () => {
       setTimeout(() => {
          soundEffectController.playSound(
             {
-               src: `modules/${constants.modName}/sounds/crit/level-complete-magical-sparkle.ogg`,
+               src: `modules/${constants.modName}/sounds/crit/resonant_chimes.ogg`,
                volume: 0.5,
                autoplay: true,
                loop: false,
@@ -184,13 +178,11 @@ export const fireEmojiConfetti = () => {
             angle: 90,
             scalar: 4,
             shapes: [
-               confetti.shapeFromText({ text: "🎉", scalar: 4 }),
-               confetti.shapeFromText({ text: "😁", scalar: 4 }),
-               confetti.shapeFromText({ text: "🔥", scalar: 4 }),
-               confetti.shapeFromText({ text: "💎", scalar: 4 }),
+               confetti.shapeFromText({ text: "🔥", scalar: 3 }),
                confetti.shapeFromText({ text: "⭐", scalar: 4 }),
-               confetti.shapeFromText({ text: "😍", scalar: 4 }),
-               confetti.shapeFromText({ text: "❤", scalar: 4 }),
+               confetti.shapeFromText({ text: "♦️", scalar: 4 }),
+               confetti.shapeFromText({ text: "🔷", scalar: 4 }),
+               confetti.shapeFromText({ text: "🔶", scalar: 4 }),
             ],
             flat: false,
             zIndex: zIndex,

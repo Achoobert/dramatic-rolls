@@ -138,7 +138,7 @@ export const registerSettings = () => {
    game.settings.register(constants.modName, "play-animations", {
       name: "dramatic-d100.settings.play-animations.name",
       hint: "dramatic-d100.settings.play-animations.label",
-      scope: "client",
+      scope: "world",
       config: true,
       default: true,
       type: Boolean,

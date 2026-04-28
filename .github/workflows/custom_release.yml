@@ -95,7 +95,6 @@ jobs:
           mkdir -p ./dramatic-d100
           cp module.json ./dramatic-d100/
           cp constants.js ./dramatic-d100/
-          cp README.md ./dramatic-d100/
           cp LICENSE ./dramatic-d100/
           [ -d lang ] && cp -r lang ./dramatic-d100/
           [ -d scripts ] && cp -r scripts ./dramatic-d100/

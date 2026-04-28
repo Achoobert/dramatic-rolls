@@ -30,7 +30,7 @@ class Animation {
       this.playSoundEffect = playSoundEffect;
    }
 
-   /** Client `play-animations`: visuals only; sounds use world `add-sound`. */
+   /** World `play-animations`: visuals only; sounds use world `add-sound`. */
    play = (num) => {
       if (game.settings.get(constants.modName, "play-animations")) {
          this.animationFunction(num);
